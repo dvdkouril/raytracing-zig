@@ -16,16 +16,18 @@ pub fn main() !void {
 
     for (0..image_height) |j| {
         for (0..image_width) |i| {
-            // const r = i / (image_width - 1);
-            // const g = j / (image_height - 1);
-            // const b = 0;
+            const r: f32 = @as(f32, @floatFromInt(i)) / (image_width - 1);
+            const g: f32 = @as(f32, @floatFromInt(j)) / (image_height - 1);
+            // const r: f32 = @floatFromInt(i) / (image_width - 1);
+            // const g: f32 = @floatFromInt(j) / (image_height - 1);
+            const b = 0;
 
-            // const outR = r * 255;
-            // const outG = g * 255;
-            // const outB = b * 255;
-            const outR = 125;
-            const outG = 125;
-            const outB = 125;
+            const outR: u32 = @intFromFloat(r * 255);
+            const outG: u32 = @intFromFloat(g * 255);
+            const outB: u32 = @intFromFloat(b * 255);
+            // const outR = 125;
+            // const outG = 125;
+            // const outB = 125;
 
             std.debug.print("{},{}\n", .{ i, j });
 
