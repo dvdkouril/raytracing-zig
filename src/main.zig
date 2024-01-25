@@ -3,8 +3,10 @@ const std = @import("std");
 pub fn main() !void {
     std.debug.print("hey.", .{});
 
-    const image_width = 256;
-    const image_height = 256;
+    const image_width = 512;
+    const image_height = 512;
+    // const image_width = 5;
+    // const image_height = 5;
 
     const stdout_file = std.io.getStdOut().writer();
     var bw = std.io.bufferedWriter(stdout_file);
@@ -12,8 +14,8 @@ pub fn main() !void {
 
     try stdout.print("P3\n{} {}\n255\n", .{ image_width, image_height });
 
-    for (0..image_height - 1) |_| {
-        for (0..image_width - 1) |_| {
+    for (0..image_height) |j| {
+        for (0..image_width) |i| {
             // const r = i / (image_width - 1);
             // const g = j / (image_height - 1);
             // const b = 0;
@@ -21,13 +23,17 @@ pub fn main() !void {
             // const outR = r * 255;
             // const outG = g * 255;
             // const outB = b * 255;
-            const outR = 255;
-            const outG = 255;
-            const outB = 255;
+            const outR = 125;
+            const outG = 125;
+            const outB = 125;
+
+            std.debug.print("{},{}\n", .{ i, j });
 
             try stdout.print("{} {} {}\n", .{ outR, outG, outB });
         }
     }
+
+    try bw.flush();
 }
 
 // pub fn main() !void {
