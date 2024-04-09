@@ -5,8 +5,6 @@ pub fn main() !void {
 
     const image_width = 512;
     const image_height = 512;
-    // const image_width = 5;
-    // const image_height = 5;
 
     const stdout_file = std.io.getStdOut().writer();
     var bw = std.io.bufferedWriter(stdout_file);
@@ -16,11 +14,12 @@ pub fn main() !void {
 
     for (0..image_height) |j| {
         for (0..image_width) |i| {
-            const r: f32 = @as(f32, @floatFromInt(i)) / (image_width - 1);
-            const g: f32 = @as(f32, @floatFromInt(j)) / (image_height - 1);
-            // const r: f32 = @floatFromInt(i) / (image_width - 1);
-            // const g: f32 = @floatFromInt(j) / (image_height - 1);
-            const b = 0;
+            const g: f32 = @as(f32, @floatFromInt(i)) / (image_width - 1);
+            const b: f32 = @as(f32, @floatFromInt(j)) / (image_height - 1);
+            const r = 0;
+            // const r: f32 = @as(f32, @floatFromInt(i)) / (image_width - 1);
+            // const g: f32 = @as(f32, @floatFromInt(j)) / (image_height - 1);
+            // const b = 0;
 
             const outR: u32 = @intFromFloat(r * 255);
             const outG: u32 = @intFromFloat(g * 255);
