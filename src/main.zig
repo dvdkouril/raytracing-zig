@@ -1,10 +1,33 @@
 const std = @import("std");
 
+const Vec3 = struct {
+    x: f32,
+    y: f32,
+    z: f32,
+
+    pub fn init(x: f32, y: f32, z: f32) Vec3 {
+        return Vec3 {
+            .x = x,
+            .y = y,
+            .z = z,
+        };
+    }
+
+    pub fn dot(self: Vec3, other: Vec3) f32 {
+        return self.x * other.x + self.y * other.y + self.z * other.z;
+    }
+}
+
 pub fn main() !void {
     std.debug.print("hey.", .{});
 
     const image_width = 512;
     const image_height = 512;
+
+    const v1 = Vec3.init(1.0, 0.0, 0.0);
+    const v2 = Vec3.init(0.0, 1.0, 0.0);
+    const a = v1.dot(v20);
+    const b = Vec3.dot(v1, v2);
 
     const stdout_file = std.io.getStdOut().writer();
     var bw = std.io.bufferedWriter(stdout_file);
